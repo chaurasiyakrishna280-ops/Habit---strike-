@@ -1,0 +1,542 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #050b14;
+    color: white;
+    min-height: 100vh;
+}
+
+.app {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+    padding: 24px 18px 40px;
+}
+
+/* Header */
+
+.eyebrow {
+    color: #62e6ff;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #8fa2b8;
+}
+
+/* AI Card */
+
+.ai-card {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #10263a, #0c1726);
+    border: 1px solid #1d4057;
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.08);
+}
+
+.ai-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: bold;
+    color: #62e6ff;
+}
+
+.online {
+    color: #65f5a2;
+}
+
+.ai-card h2 {
+    margin-top: 18px;
+    font-size: 22px;
+}
+
+.ai-card p {
+    color: #a9b9c9;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+/* Mood buttons */
+
+.moods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.moods button {
+    padding: 11px;
+    border-radius: 12px;
+    border: 1px solid #294258;
+    background: #0b1827;
+    color: white;
+    cursor: pointer;
+}
+
+.moods button:active {
+    transform: scale(0.97);
+}
+
+/* Stats */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.stat {
+    background: #0c1726;
+    border: 1px solid #172a3e;
+    border-radius: 17px;
+    padding: 14px;
+}
+
+.stat span {
+    font-size: 21px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 21px;
+    margin-top: 5px;
+}
+
+.stat small {
+    color: #71859b;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* Missions */
+
+.missions {
+    margin-top: 25px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title h2 {
+    font-size: 20px;
+}
+
+.section-title span {
+    color: #62e6ff;
+    font-weight: bold;
+}
+
+.progress {
+    height: 7px;
+    background: #17283a;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background: #62e6ff;
+    transition: 0.4s;
+}
+
+/* Habit cards */
+
+.habit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #0c1726;
+    border: 1px solid #172a3e;
+    padding: 14px;
+    border-radius: 17px;
+    margin-top: 10px;
+    transition: 0.25s;
+}
+
+.habit.completed {
+    border-color: #2d8061;
+    background: #0c211d;
+}
+
+.habit-icon {
+    font-size: 27px;
+}
+
+.habit-info {
+    flex: 1;
+}
+
+.habit-name {
+    font-weight: bold;
+}
+
+.habit-time {
+    color: #71859b;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.habit button {
+    border: none;
+    border-radius: 11px;
+    padding: 9px 11px;
+    background: #123c51;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.habit.completed button {
+    background: #23664f;
+}
+
+/* AI button */
+
+.ai-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    background: #62e6ff;
+    color: #041019;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Night card */
+
+.night-card {
+    margin-top: 15px;
+    padding: 16px;
+    border-radius: 17px;
+    background: #0c1726;
+    border: 1px solid #172a3e;
+    color: #b6c5d5;
+}
+
+.night-card p {
+    color: #71859b;
+    font-size: 12px;
+    margin-top: 5px;
+}
+/* ================================
+   TOMORROW PLANNER
+================================ */
+
+.planner-card {
+    margin-top: 18px;
+    padding: 20px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #15132b, #0c1424);
+    border: 1px solid #393263;
+    box-shadow: 0 0 30px rgba(160, 120, 255, 0.08);
+}
+
+.planner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.planner-header h2 {
+    font-size: 22px;
+    margin-top: 4px;
+}
+
+.planner-header > span {
+    font-size: 30px;
+}
+
+.planner-text {
+    color: #8797ad;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 8px;
+}
+
+.planner-list {
+    margin-top: 16px;
+}
+
+.planner-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #1c2940;
+}
+
+.planner-item:last-child {
+    border-bottom: none;
+}
+
+.planner-item > span {
+    font-size: 24px;
+}
+
+.planner-item div {
+    flex: 1;
+}
+
+.planner-item strong {
+    display: block;
+    font-size: 14px;
+}
+
+.planner-item small {
+    display: block;
+    color: #687b91;
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+.planner-item input {
+    width: 95px;
+    padding: 9px 7px;
+    border: 1px solid #30435c;
+    border-radius: 10px;
+    background: #091321;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.planner-item input:focus {
+    outline: none;
+    border-color: #b58cff;
+}
+
+.save-plan {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: #b58cff;
+    color: #100b1c;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.save-plan:active {
+    transform: scale(0.98);
+}
+
+.plan-status {
+    text-align: center;
+    color: #65f5a2;
+    font-size: 12px;
+    margin-top: 10px;
+    min-height: 16px;
+}
+/* ================================
+   MISSION TIMER
+================================ */
+
+.timer-card {
+    margin-top: 20px;
+    padding: 22px 18px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #111d31, #080f1c);
+    border: 1px solid #28506b;
+    box-shadow: 0 0 35px rgba(98, 230, 255, 0.08);
+    text-align: center;
+}
+
+.timer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.timer-top h2 {
+    font-size: 21px;
+    margin-top: 4px;
+}
+
+#timerIcon {
+    font-size: 32px;
+}
+
+.timer-circle {
+    width: 190px;
+    height: 190px;
+    margin: 25px auto 18px;
+    border-radius: 50%;
+    border: 5px solid #62e6ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        0 0 20px rgba(98, 230, 255, 0.18),
+        inset 0 0 25px rgba(98, 230, 255, 0.06);
+}
+
+#timerDisplay {
+    font-size: 38px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.timer-circle small {
+    color: #71859b;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.timer-status {
+    min-height: 22px;
+    color: #a9b9c9;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.timer-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.timer-actions button {
+    padding: 13px;
+    border-radius: 13px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.timer-start {
+    background: #62e6ff;
+    color: #041019;
+}
+
+.timer-stop {
+    background: #182638;
+    color: white;
+    border: 1px solid #30445a !important;
+}
+
+.timer-actions button:active {
+    transform: scale(0.97);
+}
+
+.timer-running .timer-circle {
+    animation: timerPulse 1.5s infinite;
+}
+
+@keyframes timerPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+.timer-finished .timer-circle {
+    animation: timerFinished 0.7s infinite alternate;
+}
+
+@keyframes timerFinished {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.06);
+    }
+}
+/* =========================
+   AI REMINDER
+========================= */
+
+.reminder-card {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #14243a, #091321);
+    border: 1px solid #315875;
+    box-shadow: 0 0 30px rgba(98, 230, 255, 0.08);
+}
+
+.reminder-card.active {
+    display: block;
+    animation: reminderAppear 0.4s ease;
+}
+
+.reminder-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.reminder-content h2 {
+    margin: 5px 0;
+}
+
+.reminder-content p {
+    color: #9eb0c2;
+    line-height: 1.5;
+}
+
+.reminder-actions {
+    display: grid;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.reminder-actions button {
+    padding: 13px;
+    border-radius: 13px;
+    border: 1px solid #304b62;
+    background: #0d1b2c;
+    color: white;
+    font-weight: bold;
+}
+
+#reminderStartBtn {
+    background: #62e6ff;
+    color: #041019;
+}
+
+@keyframes reminderAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
