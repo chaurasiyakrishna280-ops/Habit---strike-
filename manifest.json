@@ -1,0 +1,22 @@
+{
+  "name": "Habit Strike",
+  "short_name": "Habit Strike",
+  "description": "Your personal AI habit and productivity assistant",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080f1c",
+  "theme_color": "#080f1c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
