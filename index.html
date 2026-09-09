@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Strike</title>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <header>
+            <p class="eyebrow">HABIT STRIKE • AI LIFE ASSISTANT</p>
+            <h1>Good Morning ☀️</h1>
+            <p class="subtitle">Ready for today's mission?</p>
+        </header>
+
+        <section class="ai-card">
+            <div class="ai-top">
+                <span>🤖 AI ASSISTANT</span>
+                <span class="online">● ONLINE</span>
+            </div>
+
+            <h2>Your day is ready.</h2>
+
+            <p id="aiMessage">
+                How are you feeling today?
+            </p>
+
+            <div class="moods">
+                <button onclick="setMood('Great 😊')">Great 😊</button>
+                <button onclick="setMood('Good 🙂')">Good 🙂</button>
+                <button onclick="setMood('Okay 😐')">Okay 😐</button>
+                <button onclick="setMood('Tired 😴')">Tired 😴</button>
+            </div>
+        </section>
+
+        <section class="stats">
+
+            <div class="stat">
+                <span>🔥</span>
+                <strong id="streak">0</strong>
+                <small>STREAK</small>
+            </div>
+
+            <div class="stat">
+                <span>⚡</span>
+                <strong id="xp">0</strong>
+                <small>XP TODAY</small>
+            </div>
+
+            <div class="stat">
+                <span>🏆</span>
+                <strong id="level">1</strong>
+                <small>LEVEL</small>
+            </div>
+
+        </section>
+
+        <section class="missions">
+
+            <div class="section-title">
+                <h2>Today's Missions</h2>
+                <span id="progressText">0/6</span>
+            </div>
+
+            <div class="progress">
+                <div id="progressBar"></div>
+            </div>
+
+            <div id="habitList"></div>
+<!-- =========================
+     CUSTOM HABIT CREATOR
+========================= -->
+
+<section class="habit-creator">
+
+    <div class="creator-header">
+        <div>
+            <p class="eyebrow">CREATE YOUR MISSION</p>
+            <h2>➕ Add New Habit</h2>
+        </div>
+
+        <div class="creator-icon">
+            🎯
+        </div>
+    </div>
+
+    <div class="creator-form">
+
+        <label>
+            Habit Name
+        </label>
+
+        <input
+            type="text"
+            id="newHabitName"
+            placeholder="e.g. Learn Guitar"
+        >
+
+        <label>
+            Choose Icon
+        </label>
+
+        <div class="icon-picker">
+
+            <button type="button" onclick="selectHabitIcon('🎯')">🎯</button>
+            <button type="button" onclick="selectHabitIcon('📚')">📚</button>
+            <button type="button" onclick="selectHabitIcon('🏃')">🏃</button>
+            <button type="button" onclick="selectHabitIcon('💻')">💻</button>
+            <button type="button" onclick="selectHabitIcon('🎸')">🎸</button>
+            <button type="button" onclick="selectHabitIcon('🎨')">🎨</button>
+            <button type="button" onclick="selectHabitIcon('🧘')">🧘</button>
+            <button type="button" onclick="selectHabitIcon('✍️')">✍️</button>
+
+        </div>
+
+        <p id="selectedHabitIcon">
+            Selected: 🎯
+        </p>
+
+
+        <label>
+            Reminder Time
+        </label>
+
+        <input
+            type="time"
+            id="newHabitTime"
+        >
+
+
+        <label>
+            Habit Type
+        </label>
+
+        <select id="newHabitType">
+
+            <option value="time">
+                ⏱️ Time Based
+            </option>
+
+            <option value="count">
+                🔢 Count Based
+            </option>
+
+            <option value="simple">
+                ✅ Simple Task
+            </option>
+
+        </select>
+
+
+        <button
+            class="create-habit-btn"
+            onclick="createCustomHabit()"
+        >
+
+            🚀 CREATE HABIT
+
+        </button>
+
+        <p id="habitCreateStatus"></p>
+
+    </div>
+
+</section>
+        </section>
+
+        <button class="ai-button" onclick="talkToAI()">
+            🎙️ TALK TO YOUR AI ASSISTANT
+        </button>
+      <section class="timer-card" id="timerCard">
+
+    <div class="timer-top">
+        <div>
+            <p class="eyebrow">ACTIVE MISSION</p>
+            <h2 id="timerHabitName">No Mission Running</h2>
+        </div>
+
+        <span id="timerIcon">🎯</span>
+    </div>
+
+    <div class="timer-circle">
+        <div id="timerDisplay">00:00</div>
+        <small>REMAINING</small>
+    </div>
+
+    <div class="timer-status" id="timerStatus">
+        Select a mission and press START.
+    </div>
+<div class="duration-picker" id="durationPicker">
+
+    <p>⏱️ Today's session duration</p>
+
+    <div class="duration-options">
+<button
+    class="voice-duration-btn"
+    onclick="listenForDuration()">
+
+    🎙️ SET DURATION BY VOICE
+
+</button>
+
+<p id="voiceDurationStatus">
+    Say something like: "45 minutes"
+</p>
+        <button onclick="chooseDuration(15)">
+            15 MIN
+        </button>
+
+        <button onclick="chooseDuration(30)">
+            30 MIN
+        </button>
+
+        <button onclick="chooseDuration(45)">
+            45 MIN
+        </button>
+
+        <button onclick="chooseDuration(60)">
+            60 MIN
+        </button>
+
+    </div>
+
+    <div class="custom-duration">
+
+        <input
+            type="number"
+            id="customDuration"
+            min="1"
+            max="180"
+            placeholder="Custom minutes">
+
+        <button onclick="chooseCustomDuration()">
+            SET
+        </button>
+
+    </div>
+
+</div>
+    <div class="timer-actions">
+
+        <button
+            class="timer-start"
+            id="timerStartButton"
+            onclick="startSelectedMission()">
+            ▶ START
+        </button>
+
+        <button
+            class="timer-stop"
+            onclick="stopMission()">
+            ■ STOP
+        </button>
+
+    </div>
+<section class="reminder-card" id="reminderCard">
+
+    <div class="reminder-icon">🤖</div>
+
+    <div class="reminder-content">
+
+        <p class="eyebrow">AI REMINDER</p>
+
+        <h2 id="reminderTitle">
+            No active reminder
+        </h2>
+
+        <p id="reminderMessage">
+            Your AI assistant will remind you when it's time.
+        </p>
+
+    </div>
+
+    <div class="reminder-actions">
+
+        <button
+            onclick="startReminderSession()"
+            id="reminderStartBtn">
+
+            🎯 START SESSION
+
+        </button>
+
+        <button
+            onclick="listenForDuration()"
+            id="reminderVoiceBtn">
+
+            🎙️ TELL DURATION
+
+        </button>
+
+        <button
+            onclick="skipReminder()"
+            id="reminderSkipBtn">
+
+            SKIP
+        </button>
+
+    </div>
+
+</section>
+</section>
+<section class="planner-card">
+
+    <div class="planner-header">
+        <div>
+            <p class="eyebrow">NIGHT MODE</p>
+            <h2>Plan Tomorrow 🌙</h2>
+        </div>
+
+        <span>📅</span>
+    </div>
+
+    <p class="planner-text">
+        Set tomorrow's missions now. Your AI assistant will remember them.
+    </p>
+
+    <div class="planner-list">
+
+        <div class="planner-item">
+            <span>🌅</span>
+            <div>
+                <strong>Wake Up</strong>
+                <small>Morning Mission</small>
+            </div>
+            <input type="time" id="wakeTime" value="06:00">
+        </div>
+
+        <div class="planner-item">
+            <span>🏃</span>
+            <div>
+                <strong>Exercise</strong>
+                <small>Body Mission</small>
+            </div>
+            <input type="time" id="exerciseTime" value="06:30">
+        </div>
+
+        <div class="planner-item">
+            <span>💻</span>
+            <div>
+                <strong>Computer Skills</strong>
+                <small>Skill Mission</small>
+            </div>
+            <input type="time" id="computerTime" value="09:00">
+        </div>
+
+        <div class="planner-item">
+            <span>📚</span>
+            <div>
+                <strong>Study</strong>
+                <small>Knowledge Mission</small>
+            </div>
+            <input type="time" id="studyTime" value="11:00">
+        </div>
+
+        <div class="planner-item">
+            <span>📖</span>
+            <div>
+                <strong>Book Reading</strong>
+                <small>Mind Mission</small>
+            </div>
+            <input type="time" id="readingTime" value="20:00">
+        </div>
+
+        <div class="planner-item">
+            <span>🗣️</span>
+            <div>
+                <strong>Communication</strong>
+                <small>Social Mission</small>
+            </div>
+            <input type="time" id="communicationTime" value="21:00">
+        </div>
+
+    </div>
+
+    <button class="save-plan" onclick="saveTomorrowPlan()">
+        💾 SAVE TOMORROW'S MISSION
+    </button>
+
+    <p id="planStatus" class="plan-status"></p>
+
+</section>
+        <section class="night-card">
+            🌙 Tonight
+            <p>Review your day → Plan tomorrow</p>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
